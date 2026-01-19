@@ -21,6 +21,8 @@ export function AppHeader() {
 
     // Simple logic to get page title from path
     const getPageTitle = (path: string) => {
+        if (path.includes("/projects/project/storage")) return "Project Storage"
+        if (path.includes("/projects/project")) return "Project Overview"
         if (path.includes("/projects")) return "Projects"
         if (path.includes("/dashboard")) return "Dashboard"
         return "Dashboard"

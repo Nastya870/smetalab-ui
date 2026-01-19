@@ -15,6 +15,7 @@ import {
     Calendar,
     Eye
 } from "lucide-react"
+import Link from "next/link"
 import { EditProjectDialog } from "./edit-project-dialog"
 import { DeleteProjectDialog } from "./delete-project-dialog"
 
@@ -57,8 +58,8 @@ export function ProjectCard({
 
             <Separator />
 
-            <CardContent className="p-3 space-y-3">
-                <div className="grid gap-2.5">
+            <CardContent className="p-3 pt-2 space-y-2">
+                <div className="grid gap-1.5">
                     <div className="flex items-start gap-2">
                         <User className="h-3.5 w-3.5 text-muted-foreground mt-0.5" />
                         <div className="grid gap-0">
@@ -84,7 +85,7 @@ export function ProjectCard({
                     </div>
                 </div>
 
-                <Separator />
+                <Separator className="bg-border/50" />
 
                 <div className="flex items-start gap-2">
                     <MapPin className="h-3.5 w-3.5 text-muted-foreground mt-0.5" />
@@ -94,7 +95,7 @@ export function ProjectCard({
                     </div>
                 </div>
 
-                <Separator />
+                <Separator className="bg-border/50" />
 
                 <div className="grid grid-cols-2 gap-2">
                     <div className="flex items-start gap-2">
@@ -104,19 +105,19 @@ export function ProjectCard({
                             <p className="text-xs font-semibold">{startDate || "—"}</p>
                         </div>
                     </div>
-                    <div className="flex items-start gap-3">
-                        <Calendar className="h-4 w-4 text-muted-foreground mt-0.5" />
-                        <div className="grid gap-0.5">
-                            <Label className="text-[10px] uppercase tracking-wider text-muted-foreground font-bold">Окончание</Label>
-                            <p className="text-sm font-semibold">{endDate || "—"}</p>
+                    <div className="flex items-start gap-2">
+                        <Calendar className="h-3.5 w-3.5 text-muted-foreground mt-0.5" />
+                        <div className="grid gap-0">
+                            <Label className="text-[9px] uppercase tracking-tighter text-muted-foreground font-bold">Окончание</Label>
+                            <p className="text-xs font-semibold">{endDate || "—"}</p>
                         </div>
                     </div>
                 </div>
 
-                <div className="space-y-2 pt-2">
+                <div className="space-y-1.5 pt-0.5">
                     <div className="flex items-center justify-between">
-                        <Label className="text-[10px] uppercase tracking-wider text-muted-foreground font-bold">Прогресс</Label>
-                        <span className="text-xs font-bold text-primary">{progress}%</span>
+                        <Label className="text-[9px] uppercase tracking-tighter text-muted-foreground font-bold">Прогресс</Label>
+                        <span className="text-[10px] font-bold text-primary">{progress}%</span>
                     </div>
                     <Progress value={progress} className="h-1" />
                 </div>
@@ -125,9 +126,11 @@ export function ProjectCard({
             <Separator />
 
             <CardFooter className="p-2.5 flex gap-1.5">
-                <Button size="sm" className="flex-1 h-8 text-xs gap-1.5">
-                    <Eye className="h-3.5 w-3.5" />
-                    Открыть
+                <Button size="sm" className="flex-1 h-8 text-xs gap-1.5" asChild>
+                    <Link href="/projects/project">
+                        <Eye className="h-3.5 w-3.5" />
+                        Открыть
+                    </Link>
                 </Button>
                 <EditProjectDialog project={{ title, status, customer, contract, contractor, address, startDate, endDate, progress }} />
                 <DeleteProjectDialog projectTitle={title} />
