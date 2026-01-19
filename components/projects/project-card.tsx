@@ -13,10 +13,10 @@ import {
     Wrench,
     MapPin,
     Calendar,
-    Eye,
-    Trash2
+    Eye
 } from "lucide-react"
 import { EditProjectDialog } from "./edit-project-dialog"
+import { DeleteProjectDialog } from "./delete-project-dialog"
 
 interface ProjectCardProps {
     title: string
@@ -130,9 +130,7 @@ export function ProjectCard({
                     Открыть
                 </Button>
                 <EditProjectDialog project={{ title, status, customer, contract, contractor, address, startDate, endDate, progress }} />
-                <Button variant="outline" size="icon" className="h-8 w-8 text-destructive hover:text-destructive hover:bg-destructive/10">
-                    <Trash2 className="h-3.5 w-3.5" />
-                </Button>
+                <DeleteProjectDialog projectTitle={title} />
             </CardFooter>
         </Card>
     )
